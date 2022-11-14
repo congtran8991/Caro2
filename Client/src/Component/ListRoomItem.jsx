@@ -12,7 +12,7 @@ const ListRoomItem = (props) => {
           Vào phòng
         </Button>
       </div>
-      <div>{nameRoom}</div>
+      <div className="fz18 clr-blue">{nameRoom}</div>
       <div className="create-room-player">
         <div className="name-player clr-blue">{user?.user1 || "Người chơi 1"}</div>
         <div className="name-player clr-brown pl-15">{user?.user2 || "Người chơi 2"}</div>

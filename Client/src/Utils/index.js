@@ -38,7 +38,7 @@ export const checkRightCross = (objTick, newTick) => {
       dem ++
       index ++
       isTick = objTick[`${(x - index)+"_"+(y + index)}`] === tick
-      if (dem === 2) return true
+      if (dem === 5) return true
     }
 
     dem = 0
@@ -48,7 +48,7 @@ export const checkRightCross = (objTick, newTick) => {
       dem ++
       index --
       isTick = objTick[`${(x - index)+"_"+(y + index)}`] === tick
-      if (dem === 2) return true
+      if (dem === 5) return true
     }
 
     return false
