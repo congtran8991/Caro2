@@ -1,0 +1,282 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.message-modal {
+  font-family: var(--font_main);
+  font-size: 40px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.page-game {
+  background-image: url("https://muathe24h.vn/pictures/images/co-caro-online%20(3).jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.create-room-player {
+  display: flex;
+  justify-content: space-between;
+}
+
+.room-chessboard {
+  /* width: 800px; */
+  /* min-height: 800px; */
+}
+
+.room-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.room-layout {
+  display: flex;
+  background: #fff;
+  border: 2px solid var(--blue);
+}
+
+.room-chessboard td {
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  vertical-align: middle;
+  border: solid 1px #dfdfdf;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.room-chessboard table {
+  border-collapse: collapse;
+}
+
+.name-player {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: var(--font_main);
+}
+
+.new-room {
+  cursor: pointer;
+  font-family: var(--font_main);
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--blue);
+}
+
+.title-game {
+  text-align: center;
+  font-family: var(--font_main);
+  font-size: 50px;
+  font-weight: 700;
+  padding-bottom: 15px;
+  color: var(--blue);
+}
+
+.name-room, .text-your-turn {
+  color: var(--blue);
+  font-family: var(--font_main);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.room-player {
+  height: 170px;
+  min-width: 170px;
+  font-size: 0.9rem;
+  border: 1px solid #dfdfdf;
+  cursor: pointer;
+}
+
+.player1 {
+  border: 2px solid var(--blue);
+  color: var(--blue);
+  font-size: 18px;
+  font-family: var(--font_main);
+}
+
+.player2 {
+  border: 2px solid var(--red_brown);
+  color: var(--red_brown);
+  font-size: 18px;
+  font-family: var(--font_main);
+}
+
+.list-room {
+  margin: 10px;
+  height: 800px;
+}
+
+tr, td {
+  border: 2px solid var(--blue) !important;
+}
+
+.p-5 {
+  padding: 5px;
+}
+
+.p-10 {
+  padding: 10px;
+}
+
+.p-15 {
+  padding: 15px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.pl-10 {
+  padding-left: 10px;
+}
+
+.pl-15 {
+  padding-left: 15px;
+}
+
+.pl-20 {
+  padding-left: 20px;
+}
+
+.m-5 {
+  margin: 5px;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
+.m-15 {
+  margin: 15px;
+}
+
+.m-20 {
+  margin: 20px;
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.fz12 {
+  font-size: 12px;
+}
+
+.fz13 {
+  font-size: 13px;
+}
+
+.fz14 {
+  font-size: 14px;
+}
+
+.fz15 {
+  font-size: 15px;
+}
+
+.fz18 {
+  font-size: 18px;
+}
+
+.fz20 {
+  font-size: 20px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.clr-blue {
+color: var(--blue);
+}
+
+.clr-brown {
+  color: brown;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.flex {
+  display: flex;
+}
