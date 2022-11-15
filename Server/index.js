@@ -7,14 +7,13 @@ app.use(express.json());
 let path = require("path");
 // const { json } = require("express");
 const Utils = require("./Utils")
-const BoardConstant = require("./Constant")
+// const BoardConstant = require("./Constant")
 const port = process.env.PORT || 3002;
 
 // app.listen (port, () => {
 //   console.log ('Máy chủ hoạt động!');
 // });
 // app.use(function(req, res, next) {
-//     console.log("đvdv");
 //     // Website you wish to allow to connect
 //     res.setHeader('Access-Control-Allow-Origin', '*');
 //     // Request methods you wish to allow
@@ -29,7 +28,7 @@ const port = process.env.PORT || 3002;
 // });
 app.use("/", express.static("build"));
 const server = app.listen(port,{
-  pingTimeout: 60000
+  pingTimeout: 12000
 }, () => {
   console.log("Server Running on Port 3002...");
 });
@@ -37,21 +36,8 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 io = socket(server);
-const defaultUser = { name: "", turn: "", id: "", isPlay: false}
-let infoBoardGame = {
-  countTick: 0,
-  nameRoom: "",
-  objTick: {},
-  user1: defaultUser,
-  user2: defaultUser,
-  isWinGame: false,
-  newTick: {
-    tick: "",
-    x: null,
-    y: null
-  }
-};
 
+const defaultUser = { name: "", turn: "", id: "", isPlay: false}
 let dataListRoom = {};
 let informationRoom = []
 
@@ -61,9 +47,22 @@ io.on("connection", async (socket) => {
   io.emit("INFORMATION_GAME", informationRoom)
   socket.on("CREATE_ROOM", async (nameRoom) => {
     await socket.join(nameRoom);
-    const newList = JSON.parse(JSON.stringify(infoBoardGame))
-    newList.nameRoom = nameRoom
-    dataListRoom[nameRoom] = newList
+    let infoBoardGame = {
+      countTick: 0,
+      nameRoom: "",
+      objTick: {},
+      user1: defaultUser,
+      user2: defaultUser,
+      isWinGame: false,
+      newTick: {
+        tick: "",
+        x: null,
+        y: null
+      }
+    };
+    // const newList = JSON.parse(JSON.stringify(infoBoardGame))
+    infoBoardGame.nameRoom = nameRoom
+    dataListRoom[nameRoom] = infoBoardGame
     io.to(nameRoom).emit("RECEIVE_LIST_COORDINATES", dataListRoom[nameRoom]);
     informationRoom = getActiveRooms(io, dataListRoom)
     io.emit("INFORMATION_GAME", informationRoom)
@@ -152,10 +151,11 @@ io.on("connection", async (socket) => {
     if (player === "Player2") {
       dataRoom.user2.isPlay = true
     }
+
     if (dataRoom.user1.isPlay && dataRoom.user2.isPlay) {
       dataRoom.objTick = {}
       dataRoom.countTick = 0
-      io.to(nameRoom).emit(BoardConstant.RECEIVE_LIST_COORDINATES, dataRoom);
+      io.to(nameRoom).emit("RECEIVE_LIST_COORDINATES", dataRoom);
     } else {
       let reset = {
         countTick: 0,
@@ -219,7 +219,7 @@ io.on("connection", async (socket) => {
       dataRoom.user2 = defaultUser
     }
 
-    io.to(nameRoom).emit(BoardConstant.RECEIVE_LIST_COORDINATES, dataRoom);
+    io.to(nameRoom).emit("RECEIVE_LIST_COORDINATES", dataRoom);
   });
 });
 

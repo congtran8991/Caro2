@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-undef
-
+const POINT = 5;
 const createArr = (num) => {
   const arr = Array.from(Array(num), (numItem, index) => index + 1);
   return arr;
@@ -14,7 +13,7 @@ const checkLeftCross = (objTick, newTick) => {
     dem++;
     index++;
     isTick = objTick[`${x + index + "_" + (y + index)}`] === tick;
-    if (dem === 5) return true;
+    if (dem === POINT) return true;
   }
 
   dem = 0;
@@ -24,7 +23,7 @@ const checkLeftCross = (objTick, newTick) => {
     dem++;
     index--;
     isTick = objTick[`${x + index + "_" + (y + index)}`] === tick;
-    if (dem === 5) return true;
+    if (dem === POINT) return true;
   }
 
   return false;
@@ -39,7 +38,7 @@ const checkRightCross = (objTick, newTick) => {
     dem++;
     index++;
     isTick = objTick[`${x - index + "_" + (y + index)}`] === tick;
-    if (dem === 2) return true;
+    if (dem === POINT) return true;
   }
 
   dem = 0;
@@ -49,7 +48,7 @@ const checkRightCross = (objTick, newTick) => {
     dem++;
     index--;
     isTick = objTick[`${x - index + "_" + (y + index)}`] === tick;
-    if (dem === 2) return true;
+    if (dem === POINT) return true;
   }
 
   return false;
@@ -64,7 +63,7 @@ const checkHorizontal = (objTick, newTick) => {
     dem++;
     index++;
     isTick = objTick[`${x + "_" + (y + index)}`] === tick;
-    if (dem === 5) return true;
+    if (dem === POINT) return true;
   }
 
   dem = 0;
@@ -74,7 +73,7 @@ const checkHorizontal = (objTick, newTick) => {
     dem++;
     index--;
     isTick = objTick[`${x + "_" + (y + index)}`] === tick;
-    if (dem === 5) return true;
+    if (dem === POINT) return true;
   }
 
   return false;
@@ -89,7 +88,7 @@ const checkVertical = (objTick, newTick) => {
     dem++;
     index++;
     isTick = objTick[`${x + index + "_" + y}`] === tick;
-    if (dem === 5) return true;
+    if (dem === POINT) return true;
   }
 
   dem = 0;
@@ -99,7 +98,7 @@ const checkVertical = (objTick, newTick) => {
     dem++;
     index--;
     isTick = objTick[`${x + index + "_" + y}`] === tick;
-    if (dem === 5) return true;
+    if (dem === POINT) return true;
   }
 
   return false;

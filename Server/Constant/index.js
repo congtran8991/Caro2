@@ -1,5 +1,2 @@
 module.exports = {
-    SEND_CURRENT_COORDINATES: "send_current_coordinates",
-    RECEIVE_LIST_COORDINATES: "RECEIVE_LIST_COORDINATES",
-    CREATE_ROOM: "CREATE_ROOM"
 }

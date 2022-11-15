@@ -85,7 +85,7 @@ const Room = () => {
   const isTurn = dataRoom?.countTick % 2 === 0;
   const textPlayer = isTurn ? Constant.PLAYER.player1 : Constant.PLAYER.player2;
   const isTurnTick = player === textPlayer;
-  const isShowModalMessage = checkWinGame(dataRoom) && dataRoom.isWinGame && player;
+  const isShowModalMessage = !!(checkWinGame(dataRoom) && dataRoom.isWinGame && player);
 
 
   return (
@@ -124,7 +124,7 @@ const Room = () => {
               {isTurnTick ? Constant.BOARD_GAME.message_your_turn : Constant.BOARD_GAME.message_your_competitor}
             </div>
             <div className="fz12 m-10">{Constant.BOARD_GAME.title_note}</div>
-            {isShowModalMessage && <ModalMessage isMessage={isTurnTick} dataRoom={dataRoom} player={player} />}
+            {<ModalMessage isMessage={isTurnTick} dataRoom={dataRoom} player={player} isShowModalMessage = {isShowModalMessage} />}
           </div>
         </div>
       </div>

@@ -1,28 +1,33 @@
-import { useState} from "react"
+import { useState } from "react";
 const useTimer = (startTime) => {
-    const [time, setTime] = useState(startTime)
-    const [intervalID, setIntervalID] = useState(null)
-    const hasTimerEnded = time <= 0
-    const isTimerRunning = intervalID != null
+  const [time, setTime] = useState(startTime);
+  const hasTimerEnded = time <= 0;
+  let invalidInterval;
 
-    const startTimer = () => {
-        if (!hasTimerEnded && !isTimerRunning) {
-            const invalid = setIntervalID(setInterval(() => {
-                setTime( t => {
-                    if (t-1>1) {
-                        return t - 1
-                    }
-                    clearInterval(invalid)
-                    return 0
-                })
-            }, 1000))
-        }
+  const startTimer = () => {
+    if (!hasTimerEnded) {
+      invalidInterval = setInterval(() => {
+        setTime((t) => t - 1);
+      }, 1000);
     }
+  };
 
-    return {
-        time,
-        startTimer
+  const stopTimer = () => {
+    clearInterval(invalidInterval);
+  };
+
+  const resetStartTime = (newStartTime) => {
+    if (hasTimerEnded) {
+      setTime(newStartTime)
     }
-}
+  }
 
-export default useTimer
+  return {
+    time,
+    startTimer,
+    stopTimer,
+    resetStartTime
+  };
+};
+
+export default useTimer;

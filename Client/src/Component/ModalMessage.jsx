@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { DataContext } from "../Context/useContext"
 import { Modal } from "antd";
 
@@ -9,16 +9,19 @@ import useTimer  from "../Hooks/useTimer"
 import * as Constant from "../Constant"
 
 const ModalMessage = (props) => {
-  const { time, startTimer } = useTimer(8)
+  const { time, startTimer, stopTimer, resetStartTime } = useTimer(5)
   const { socketIO } = useContext(DataContext)
-  const { isMessage, dataRoom, player } = props;
-  const [openModal] = useState(true);
+  const { isMessage, dataRoom, player, isShowModalMessage } = props;
   useEffect(() => {
-    startTimer()
-  }, []);
+    isShowModalMessage && startTimer()
+    return () => {
+      stopTimer()
+      resetStartTime(5)
+    }
+  }, [time, isShowModalMessage]);
 
   useEffect(() => {
-    if (time/2===0 && dataRoom.isWinGame){
+    if (!time && dataRoom.isWinGame){
       handleContinueGame()
     }
   },[Boolean(time)])
@@ -39,14 +42,14 @@ const ModalMessage = (props) => {
   const classMessage = `message-modal ${isMessage ? "clr-brown" : "clr-blue"}`
   return (
     <Modal
-      open={openModal}
+      open={isShowModalMessage}
       style={{ top: 50 }}
       closable={false}
       footer={null}
       width={500}
     >
       <div className={classMessage}>{messageModal}</div>
-      <div className="text-center fz15 clr-blue">{Constant.MESSAGE_MODAL.new_game} {time/2}</div>
+      <div className="text-center fz15 clr-blue">{Constant.MESSAGE_MODAL.new_game} {time}</div>
     </Modal>
   );
 };
@@ -55,6 +58,7 @@ ModalMessage.propTypes = {
   isMessage: PropTypes.bool,
   dataRoom: PropTypes.object,
   player: PropTypes.string,
+  isShowModalMessage: PropTypes.bool
 };
 
 export default ModalMessage;
