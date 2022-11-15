@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, memo } from "react";
 import { DataContext } from "../Context/useContext"
 import { Modal } from "antd";
 
@@ -9,9 +9,9 @@ import useTimer  from "../Hooks/useTimer"
 import * as Constant from "../Constant"
 
 const ModalMessage = (props) => {
+  const { isMessage, dataRoom, player, isShowModalMessage } = props;
   const { time, startTimer, stopTimer, resetStartTime } = useTimer(5)
   const { socketIO } = useContext(DataContext)
-  const { isMessage, dataRoom, player, isShowModalMessage } = props;
   useEffect(() => {
     isShowModalMessage && startTimer()
     return () => {
@@ -61,4 +61,8 @@ ModalMessage.propTypes = {
   isShowModalMessage: PropTypes.bool
 };
 
-export default ModalMessage;
+const areEqual = (prevProps, nextProps) => {
+  return prevProps.isShowModalMessage === nextProps.isShowModalMessage
+}
+
+export default memo(ModalMessage, areEqual);
