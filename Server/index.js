@@ -90,6 +90,7 @@ io.on("connection", async (socket) => {
 
   socket.on("PLAYER", (data) => {
     const {turn, nameRoom} = data
+    if (!dataListRoom[nameRoom]) return
     let player = {
       name: turn === "X" ? "Player1" : "Player2", 
       turn,
