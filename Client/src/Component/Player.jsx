@@ -4,7 +4,7 @@ import * as Constant from "../Constant"
 import PropTypes from 'prop-types';
 
 const Player = (props) => {
-  const { text = "", name = "", turnText = "", isPlay = false, className = "", onClick = () => {}} = props;
+  const { text = "", name = "", turnText = "", isPlay = false, className = "", onClick = () => {}} = props; 
   return (
     <div className={className} onClick = { onClick }>
       <div className="text-left flex">

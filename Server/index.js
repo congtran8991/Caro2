@@ -60,7 +60,6 @@ io.on("connection", async (socket) => {
         y: null
       }
     };
-    // const newList = JSON.parse(JSON.stringify(infoBoardGame))
     infoBoardGame.nameRoom = nameRoom
     dataListRoom[nameRoom] = infoBoardGame
     io.to(nameRoom).emit("RECEIVE_LIST_COORDINATES", dataListRoom[nameRoom]);

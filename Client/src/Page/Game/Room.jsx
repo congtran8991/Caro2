@@ -101,7 +101,8 @@ const Room = () => {
               <div className="fz13 pointer" onClick={handleMoveRoom}>Rời phòng</div>
             </div>
               <PlayerCpn 
-                className="room-player player1 p-5" 
+                className={`room-player player1 p-5 ${isTurn && "bg-blue"}`} 
+                isTurn={isTurn}
                 turnText={isTurn ? Constant.BOARD_GAME.message_turn_X : "" } 
                 text={"X"} 
                 name={dataRoom?.user1?.name} 
@@ -111,7 +112,7 @@ const Room = () => {
                 }}
               />
               <PlayerCpn 
-                className="room-player player2 mt-10 p-5" 
+                className={`room-player player2 mt-10 p-5 ${!isTurn && "bg-brown"}`}
                 turnText={!isTurn ? Constant.BOARD_GAME.message_turn_O : ""} 
                 text={"O"} 
                 name={dataRoom?.user2?.name} 

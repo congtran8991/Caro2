@@ -12,6 +12,9 @@ const Game = () => {
     socketIO.on("MOVE_ROOM", () => {
       setIsPlayGame(true)
     })
+    return () => {
+      socketIO.off("MOVE_ROOM")
+    }
   }, [])
   return (
     <div className="page-game">

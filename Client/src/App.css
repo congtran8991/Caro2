@@ -121,7 +121,8 @@
   color: var(--blue);
 }
 
-.name-room, .text-your-turn {
+.name-room,
+.text-your-turn {
   color: var(--blue);
   font-family: var(--font_main);
   font-size: 20px;
@@ -157,7 +158,8 @@
   height: 800px;
 }
 
-tr, td {
+tr,
+td {
   border: 2px solid var(--blue) !important;
 }
 
@@ -266,11 +268,19 @@ tr, td {
 }
 
 .clr-blue {
-color: var(--blue);
+  color: var(--blue);
+}
+
+.bg-blue {
+  background: var(--blue_second);
 }
 
 .clr-brown {
-  color: brown;
+  color: var(--red_brown);;
+}
+
+.bg-brown {
+  background: var(--red_brown_second);
 }
 
 .bold {

@@ -1,4 +1,4 @@
-import React, { createContext, memo, useState, useMemo } from 'react'
+import React, { createContext, memo } from 'react'
 import io from 'socket.io-client'
 import PropTypes from 'prop-types';
 export const DataContext = createContext(null)
@@ -15,11 +15,7 @@ if (process.env.NODE_ENV === "development")
 let socket = io(CONNECTION_PORT, { transports: ['websocket'] })
 const LoadingContextProvider = ({ children }) =>
 {
-  const [userName, setUserName] = useState("");
-  const value = useMemo(
-    () => ({ userName, setUserName, socketIO: socket }), 
-    [userName]
-  );
+  const value = { socketIO: socket } 
 
   return (
     <DataContext.Provider value={value}>

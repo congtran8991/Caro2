@@ -8,14 +8,15 @@ import PropTypes from "prop-types";
 
 import * as Constant from "../Constant";
 
+let createBox = {
+  X: createArr(20),
+  Y: createArr(20),
+};
 const Board = (props) => {
   const { dataRoom, player } = props;
-  const { objTick = {}, user1, user2, nameRoom, countTick } = dataRoom;
+  console.log(dataRoom)
+  const { objTick = {}, user1, user2, nameRoom, countTick, newTick } = dataRoom;
   const { socketIO } = useContext(DataContext);
-  let createBox = {
-    X: createArr(20),
-    Y: createArr(20),
-  };
 
   const handleClickBoard = (e) => {
     if (!player) return;
@@ -43,6 +44,7 @@ const Board = (props) => {
                   X={itemX}
                   Y={itemY}
                   value={objTick[`${itemX + "_" + itemY}`]}
+                  newTick={newTick}
                 />
               ))}
             </tr>
