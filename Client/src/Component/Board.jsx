@@ -14,7 +14,6 @@ let createBox = {
 };
 const Board = (props) => {
   const { dataRoom, player } = props;
-  console.log(dataRoom)
   const { objTick = {}, user1, user2, nameRoom, countTick, newTick } = dataRoom;
   const { socketIO } = useContext(DataContext);
 
