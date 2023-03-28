@@ -1,10 +1,7 @@
-
-import './App.css';
-import Router from './Router';
-// const CONNECTION_PORT = "localhost:3002/";
-// let socket: any;
+import React from "react";
+import "./App.css";
+import Router from "./Router";
 function App() {
-  // eslint-disable-next-line react/react-in-jsx-scope
-  return  <Router/>
+  return <Router />;
 }
 export default App;

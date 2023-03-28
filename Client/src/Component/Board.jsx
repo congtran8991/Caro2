@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 
 import * as Constant from "../Constant";
 
-let createBox = {
+const createBox = {
   X: createArr(20),
   Y: createArr(20),
 };

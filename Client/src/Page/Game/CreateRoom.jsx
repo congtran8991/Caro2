@@ -16,6 +16,9 @@ const CreateRoom = (props) => {
     socketIO.on("INFORMATION_GAME", (data) => {
       setActiveRoom(data);
     });
+    return () => {
+      socketIO.off("INFORMATION_GAME");
+    };
   }, []);
 
   const handleCreateRoom = async () => {

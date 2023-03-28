@@ -5,9 +5,9 @@ import { routes } from "./routes";
 
 function AppRouter() {
   const showContentMenus = () => {
-    const result = routes?.map((route, index) => {
-      return <Route key={index} path={route?.path} element={route.main} />;
-    });
+    const result = routes?.map((route, index) => (
+      <Route key={index} path={route.path} element={route.main} />
+    ));
     return <>{result}</>;
   };
   return (

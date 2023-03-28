@@ -18,15 +18,15 @@ const useTimer = (startTime) => {
 
   const resetStartTime = (newStartTime) => {
     if (hasTimerEnded) {
-      setTime(newStartTime)
+      setTime(newStartTime);
     }
-  }
+  };
 
   return {
     time,
     startTimer,
     stopTimer,
-    resetStartTime
+    resetStartTime,
   };
 };
 

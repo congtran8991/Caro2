@@ -1,9 +1,9 @@
-import React from 'react';
-import Game from '../Page/Game';
+import React from "react";
+import Game from "../Page/Game";
 export const routes = [
-    {
-        path: "/",
-        exact: true,
-        main: <Game />
-    }
+  {
+    path: "/",
+    exact: true,
+    main: <Game />,
+  },
 ];
